@@ -1,0 +1,64 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+    <div>
+        <h3>Signup Form</h3>
+        <form #profileForm="ngForm">
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Profile Name</mat-label>
+                    <input matInput name="profilename" [(ngModel)]="profile.name" required>
+                    <mat-error>Profile name required</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput name="email" [(ngModel)]="profile.email" required>
+                    <mat-error>Email required</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Phone number</mat-label>
+                    <input matInput name="phonenumber"  [(ngModel)]="profile.phoneNumber" required>
+                    <mat-error>Phone number required</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="profile.dob"  name="dob">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-radio-group name="role" [(ngModel)]="profile.role" required>
+                    <mat-radio-button value="1">Student</mat-radio-button>
+                    <mat-radio-button value="2">Staff</mat-radio-button>
+                </mat-radio-group>                
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Select qualification</mat-label>
+                    <mat-select appearance="fill" name="qualification" [(ngModel)]="profile.qualification">
+                        <mat-option *ngFor="let q of qualifications" value="{{q.id}}">{{q.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Comments</mat-label>
+                    <textarea matInput name="comments" [(ngModel)]="profile.comments"></textarea>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-checkbox #accept>
+                    I Accept Above Informations
+                </mat-checkbox>
+            </div>
+            <div>
+                <button type="submit" mat-raised-button color="primary" [disabled]="!profileForm.valid || !accept.checked">Sign up</button>
+            </div>         
+        </form>
+    </div>
+</div>

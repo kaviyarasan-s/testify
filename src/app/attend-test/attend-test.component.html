@@ -1,0 +1,21 @@
+<form #testForm="ngForm" (ngSubmit)="submitTest()">
+    <div>
+        <ng-container *ngFor="let ques of questions; let i=index">
+            <div>
+                {{i+1}}. {{ques.name}}
+            </div>
+            <div>
+                <mat-radio-group [(ngModel)]="ques.selectedAnswer" name="{{i+1}}">
+                    <ng-container *ngFor="let ans of ques.answers">
+                        <div>
+                            <mat-radio-button value="{{ans}}">{{ans}}</mat-radio-button>
+                        </div>
+                    </ng-container>
+                </mat-radio-group>
+            </div>
+        </ng-container>
+    </div>
+    <div>
+        <button mat-raised-button color="primary">Submit</button>
+    </div>
+</form>

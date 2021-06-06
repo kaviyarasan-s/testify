@@ -1,0 +1,14 @@
+<mat-radio-group [(ngModel)]="showAssignedTest" (change)="showContainer()">
+    <mat-radio-button value="assignedTest">Assigned test</mat-radio-button>
+    <mat-radio-button value="unAssignedTest">Un assigned test</mat-radio-button>
+</mat-radio-group>
+<div>
+    <ng-template #assignedTest>
+        Assigned test
+    </ng-template>
+</div>
+<div>
+    <ng-template #unAssignedTest>
+        UnAssigned test
+    </ng-template>
+</div>
